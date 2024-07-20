@@ -241,6 +241,9 @@ const web3 = new Web3(window.ethereum);
 
 ###  Interacting with the Smart Contract
 
+To interact with the Lottery smart contract from your React application, you need to import the contract's ABI and address, create a contract instance, and call its functions.
+
+Create a new file called `lottery.js` in your React project to manage the contract interaction.
 ```javascript
 // lottery.js
 import web3 from "./web3";
@@ -257,6 +260,8 @@ export default new web3.eth.Contract(abi, address);
 
 
 #### Calling Contract Functions
+
+By using the contract instance created with Web3, you can call the contract's functions and send transactions to the blockchain.
 
 
 ```mermaid
@@ -301,6 +306,8 @@ graph TD
 
 ```javascript
 // App.js
+import lottery from "./lottery";
+// ...
 const manager = await lottery.methods.manager().call(); 
 const players = await lottery.methods.getPlayers().call();
 await lottery.methods.enter().send({ ... });  // Sending a transaction
@@ -316,6 +323,9 @@ await lottery.methods.pickWinner().send({ ... });
 
 ### Web3 Utilities
 
+To send transactions to the blockchain, you need to specify the value in wei. Web3 provides utility functions to convert between different units, such as Ether and Wei.
+
+
 ```mermaid
 graph TD
 
@@ -330,7 +340,6 @@ end
 web3Utils --> toWei
 web3Utils --> fromWei
 
-
 ```
 
 ```javascript
@@ -338,6 +347,23 @@ web3.utils.toWei(value, "ether");              // Convert ether to wei
 web3.utils.fromWei(balance, "ether");          // Convert wei to ether
 ```
 
+Specify the value in wei when sending transactions to the blockchain.
+```js
+// App.js
+await lottery.methods.enter().send({
+    from: accounts[0],
+    value: web3.utils.toWei(value, "ether"),
+    })
+```
+
+To display the balance in Ether in your React application, convert the balance from wei to Ether.
+```js
+// App.js
+//...
+const balance = await web3.eth.getBalance(lottery.options.address);
+//...
+{web3.utils.fromWei(balance, "ether")} ether
+```
 ## Running the React Application
 
 
