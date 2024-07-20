@@ -6,7 +6,7 @@ This is a guide to deploying a Lottery smart contract using Truffle and interact
 
 The Lottery smart contract is a simple Ethereum smart contract that allows users to enter a lottery by sending a minimum amount of Ether. The contract owner (manager) can then pick a winner randomly from the list of players and transfer the contract's balance to the winner.
 
-For more details about the Lottery smart contract, see the previous post on <a href="/posts/lottery-smart-contract-remix"> Blockchain Basics P3 - Lottery Contract: A Beginner’s Guide with Remix and Solidity</a>
+For more details about the Lottery smart contract, see the previous post on <a href="https://kelvin-bz.github.io/posts/lottery-smart-contract-remix/"> Blockchain Basics P3 - Lottery Contract: A Beginner’s Guide with Remix and Solidity</a>
 
 ### Create a new Truffle project
 
@@ -117,7 +117,7 @@ module.exports = function(deployer) {
 
 **Ganache** is a personal blockchain for Ethereum development you can use to deploy contracts, develop your applications, and run tests.  It acts as a simulated Ethereum network on your local machine, allowing you to test your smart contracts and decentralized applications (dApps) without incurring real costs or risking funds on a live network.
 
-![ganache]({{ site.baseurl }}/assets/images/ganache.png)
+![alt text](img/ganache.png)
 
 For more information, visit the [Ganache website](https://archive.trufflesuite.com/ganache/).
 
